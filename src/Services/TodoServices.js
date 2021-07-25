@@ -3,7 +3,7 @@ async function getTodos(filter){
     let formData = new FormData();
 
     formData.append('filter',filter)
-    return fetch('https://student-companion-backend.herokuapp.com/login/api/todo/get',{
+    return fetch('https://student-companion-backend.herokuapp.com/api/todo/get',{
         method: "POST",
         headers: {
             'Authorization': localStorage.getItem("StudentToken"),
@@ -20,7 +20,7 @@ async function getTodos(filter){
     })
 }
 async function addTodos(todoDetails){
-    return fetch('https://student-companion-backend.herokuapp.com/login/api/todo/add',{
+    return fetch('https://student-companion-backend.herokuapp.com/api/todo/add',{
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -38,7 +38,7 @@ async function addTodos(todoDetails){
     })
 }
 async function updateTodos(todoDetails){
-    return fetch('https://student-companion-backend.herokuapp.com/login/api/todo/update',{
+    return fetch('https://student-companion-backend.herokuapp.com/api/todo/update',{
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -58,7 +58,7 @@ async function updateTodos(todoDetails){
     })
 }
 async function deleteTodos(idx){
-    return fetch('https://student-companion-backend.herokuapp.com/login/api/todo/delete',{
+    return fetch('https://student-companion-backend.herokuapp.com/api/todo/delete',{
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -77,7 +77,7 @@ async function deleteTodos(idx){
 
 async function setReminder(schedule,data){
     let d = new Date(schedule)
-    return fetch('https://student-companion-backend.herokuapp.com/login/api/todo/reminder',{
+    return fetch('https://student-companion-backend.herokuapp.com/api/todo/reminder',{
         method: "POST",
         headers: {
             "Content-Type" : "application/json"
