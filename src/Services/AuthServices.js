@@ -15,7 +15,7 @@ let currentUser = new BehaviorSubject(getUser());
 
 async function RegisterService(userDetails){
     console.log(process.env.REACT_APP_Backend)
-    return fetch("http://localhost:5000/api/auth/register",{
+    return fetch("https://student-companion-backend.herokuapp.com/login/api/auth/register",{
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -40,7 +40,7 @@ async function RegisterService(userDetails){
 }
 async function LoginService(userDetails){
     console.log(process.env.REACT_APP_Backend)
-    return fetch("http://localhost:5000/api/auth/login",{
+    return fetch("https://student-companion-backend.herokuapp.com/login/api/auth/login",{
         method: "POST",
         headers: {
             "Content-Type": "application/json"

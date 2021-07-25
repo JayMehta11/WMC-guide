@@ -1,5 +1,5 @@
 async function getUsers(search=""){
-    return fetch('http://localhost:5000/api/auth/get',{
+    return fetch('https://student-companion-backend.herokuapp.com/login/api/auth/get',{
         method: "POST",
         headers: {
             "Content-Type" : "application/json"

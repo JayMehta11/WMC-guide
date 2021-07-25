@@ -1,5 +1,5 @@
 async function addCourse(courseDetails){
-    return fetch('http://localhost:5000/api/course/add',{
+    return fetch('https://student-companion-backend.herokuapp.com/login/api/course/add',{
         method: "POST",
         headers: {
             "Content-Type" : "application/json"
@@ -23,7 +23,7 @@ async function addCourse(courseDetails){
     })
 }
 async function updateCourse(courseDetails){
-    return fetch('http://localhost:5000/api/course/update',{
+    return fetch('https://student-companion-backend.herokuapp.com/login/api/course/update',{
         method: "POST",
         headers: {
             "Content-Type" : "application/json"
@@ -47,7 +47,7 @@ async function updateCourse(courseDetails){
     })
 }
 async function addRating(idx,comment,rating){
-    return fetch('http://localhost:5000/api/course/addRating',{
+    return fetch('https://student-companion-backend.herokuapp.com/login/api/course/addRating',{
         method: "POST",
         headers: {
             "Content-Type" : "application/json"
@@ -67,7 +67,7 @@ async function addRating(idx,comment,rating){
     })
 }
 async function deleteCourse(idx){
-    return fetch('http://localhost:5000/api/course/delete',{
+    return fetch('https://student-companion-backend.herokuapp.com/login/api/course/delete',{
         method: "POST",
         headers: {
             "Content-Type" : "application/json"
@@ -83,7 +83,7 @@ async function deleteCourse(idx){
     })
 }
 async function getCourse(search=""){
-    return fetch('http://localhost:5000/api/course/get',{
+    return fetch('https://student-companion-backend.herokuapp.com/login/api/course/get',{
         method: "POST",
         headers: {
             "Content-Type" : "application/json"
@@ -100,7 +100,7 @@ async function getCourse(search=""){
 }
 
 async function getEnrolledIn(semester="",year=""){
-    return fetch('http://localhost:5000/api/course/enrolledIn',{
+    return fetch('https://student-companion-backend.herokuapp.com/login/api/course/enrolledIn',{
         method: "POST",
         headers: {
             "Content-Type" : "application/json",
@@ -131,7 +131,7 @@ async function enrollStudents(data,otherData,m){
         })
     })
 
-    return fetch('http://localhost:5000/api/course/enrollInCourse',{
+    return fetch('https://student-companion-backend.herokuapp.com/login/api/course/enrollInCourse',{
         method: "POST",
         headers: {
             "Content-Type" : "application/json"
