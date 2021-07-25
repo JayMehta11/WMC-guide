@@ -211,7 +211,7 @@ export default function Courses() {
     return (
         <>
             <div className="w-100 mt-4 px-lg-5 px-md-4 px-1 d-flex justify-content-between align-items-center">
-                <Button variant="contained" onClick={() => setOpenOperationDialog(true)} startIcon={<AddOutlined />} color="primary">Add Course</Button>
+                {user.isAdmin && <Button variant="contained" onClick={() => setOpenOperationDialog(true)} startIcon={<AddOutlined />} color="primary">Add Course</Button>}
                 <TextField 
                     inputRef={searchTerm}
                     label="Search"

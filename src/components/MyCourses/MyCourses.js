@@ -24,13 +24,11 @@ export default function MyCourses() {
     const [courseRatingOpen,setCourseRatingOpen] = useState(-1);
     
     const {setGlobalLoading} = useContext(GlobalLoadingContext)
-    const [rating,setRating] = useState(1);
     
-    
+    // const [creditsDistribution]
     
     
     const [user,setUser] = useState(currentUser.value)
-    const ratingRef = useRef("")
     const [page,setPage] = useState(0);
     const [credits,setCredits] = useState(0)
     const [semester,setSemester] = useState("");
@@ -111,51 +109,6 @@ export default function MyCourses() {
         }
         
     }
-
-    let updateRating = (idx,comment,rate) => {
-        let updatedList = []
-        courses.map(course => {
-            
-            if(course._id === idx){
-               let temp = course;
-                temp.ratings.push({
-                    rating: rate,
-                    comment: comment
-                })
-                updatedList.push(temp);
-            }else{
-                updatedList.push(course);
-            }
-        })
-        setcourses(updatedList)
-    }
-
-    let AddRating = async (idx) => {
-        setGlobalLoading(true);
-
-        try{
-            let AddRatingResponse = await addRating(idx,ratingRef.current.value,rating);
-            
-            if(AddRatingResponse.status){
-                toast.success(AddRatingResponse.message)
-                updateRating(idx,ratingRef.current.value,rating);
-                ratingRef.current.value = "";
-                setRating(1)
-                setGlobalLoading(false)
-            }else{
-                toast.error(AddRatingResponse.message)
-                setGlobalLoading(false)
-            }
-        }catch(err){
-            console.log(err)
-            setGlobalLoading(false)
-            toast.error("Unable to Add Rating")
-        }
-    }
-
-    const ChangeRating = (newRating) => {
-        setRating(parseInt(newRating))
-      };
     let getRating = (course) => {
         let rate = 0;
         course.ratings.map((r,i) => {
@@ -288,17 +241,6 @@ export default function MyCourses() {
                                     )}
                                         
                                 </div>}
-                                <div className="w-100 d-flex align-items-end">
-                                    <TextField 
-                                        label="Comment"
-                                        inputRef={ratingRef}
-                                    />
-                                    <Rating 
-                                        value={rating}
-                                        setRating={(rate) => ChangeRating(rate)}
-                                    />
-                                    <Button variant="contained" color="secondary" onClick={() => AddRating(course._id)}>Add Rating</Button>
-                                </div>
                                     
 
                             </div>}
