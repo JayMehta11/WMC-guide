@@ -148,7 +148,7 @@ export default function Operation(props) {
     let UpdateCourse = async () => {
         setGlobalLoading(true)
         try{
-            let UpdateCourseResponse = await updateCourse(courseDetails);
+            let UpdateCourseResponse = await updateCourse(courseDetails,props.course._id);
             setGlobalLoading(false)
             if(UpdateCourseResponse.status){
                 toast.success(UpdateCourseResponse.message)

@@ -1,5 +1,5 @@
 import { Button, IconButton, TextField } from '@material-ui/core'
-import { Add, CheckCircle, ExpandLessOutlined, FirstPageOutlined, LastPageOutlined, NavigateBeforeOutlined, NavigateNextOutlined, RemoveOutlined, SentimentDissatisfiedOutlined } from '@material-ui/icons'
+import { Add, CheckCircle, ExpandLessOutlined, FirstPageOutlined, LastPageOutlined, LocalConvenienceStoreOutlined, NavigateBeforeOutlined, NavigateNextOutlined, RemoveOutlined, SentimentDissatisfiedOutlined } from '@material-ui/icons'
 
 import * as moment from 'moment'
 import React, { useContext, useEffect, useRef, useState } from 'react'
@@ -7,7 +7,7 @@ import PulseLoader from 'react-spinners/PulseLoader'
 
 import { toast } from 'react-toastify'
 import { GlobalLoadingContext } from '../../Context/GlobalLoadingContext'
-
+import { PieChart } from 'react-minimal-pie-chart';
 
 import { currentUser } from '../../Services/AuthServices'
 import { addRating, getEnrolledIn } from '../../Services/CourseServices'
@@ -25,7 +25,8 @@ export default function MyCourses() {
     
     const {setGlobalLoading} = useContext(GlobalLoadingContext)
     
-    // const [creditsDistribution]
+    const [creditsDistribution,setCreditsDistribution] = useState(false);
+    const [creditsDistributionData,setCreditsDistributionData] = useState([]);
     
     
     const [user,setUser] = useState(currentUser.value)
@@ -47,7 +48,9 @@ export default function MyCourses() {
 
     
     
-    
+    const colors = [
+        "lightblue","red","yellow","lightgreen","orange","purple"
+    ]
     
     
     
@@ -96,19 +99,46 @@ export default function MyCourses() {
                     temp += parseInt(c.course[0].credits)
                 })
                 setCredits(temp)
-                setcourses(CourseResponse.enrollments)
+                setcourses(CourseResponse.enrollments);
+                let tp = new Map();
+                CourseResponse.enrollments.map(course => {
+                    course.course[0].categoryIds.map(c => {
+                        let x = tp.get(c);
+                        if(x){
+                            tp.set(c,parseInt(parseInt(x) + parseInt(course.course[0].credits)));
+                        }else{
+                            tp.set(c,parseInt(course.course[0].credits));
+                        }
+                    })
+                })
+                let y = [];
+                let count=0;
+                for (let [key, value] of tp) {
+                    y.push({
+                        title: `${key}: ${value}`,
+                        value: parseInt(value),
+                        color: colors[count]
+                    })
+                    count++;
+                }
+                
+                setCreditsDistribution(tp)
+                setCreditsDistributionData(y);
 
             }else{
+                
                 setcourses([])
                 toast.error("Unable to get Courses") 
             }
         }catch(err){
+            console.log(err)
             setLoading(false);
             toast.error("Unable to get Courses")
         }
         }
         
     }
+    console.log(creditsDistribution,creditsDistributionData);
     let getRating = (course) => {
         let rate = 0;
         course.ratings.map((r,i) => {
@@ -184,7 +214,17 @@ export default function MyCourses() {
                 
             </div>
              
-            
+           {creditsDistribution!==false && <div className="mx-auto my-3 d-flex justify-content-center align-items-center" style={{color: "white",maxWidth: "200px",maxHeight: "200px"}}>
+                <span><PieChart 
+                    data = {creditsDistributionData}
+                      label={(props) => { return props.dataEntry.title;}}
+                      labelStyle={{
+                        fontSize: '8px',
+                        fontWeight: "bold"
+                      }}  
+                      animate={true}
+                /></span>
+            </div>}
             {courses.length===0 ? <h4 className={`text-center mt-5 no-data-found`}>No Data Found <SentimentDissatisfiedOutlined /></h4> :
             <div className="w-100 my-4 d-flex flex-column justify-content-between align-items-center course-container px-lg-5 px-md-4 px-1 mx-auto">
                 <div className="w-100 d-flex  align-items-center py-0 header">
