@@ -14,7 +14,6 @@ let getUser = () => {
 let currentUser = new BehaviorSubject(getUser());
 
 async function RegisterService(userDetails){
-    console.log(process.env.REACT_APP_Backend)
     return fetch("https://student-companion-backend.herokuapp.com/api/auth/register",{
         method: "POST",
         headers: {
@@ -30,7 +29,6 @@ async function RegisterService(userDetails){
             programme: userDetails.programme
         })
     }).then(res => res.json()).catch(err => {
-        console.log(err)
         return {
             
             status: false,
@@ -39,7 +37,6 @@ async function RegisterService(userDetails){
     })
 }
 async function LoginService(userDetails){
-    console.log(process.env.REACT_APP_Backend)
     return fetch("https://student-companion-backend.herokuapp.com/api/auth/login",{
         method: "POST",
         headers: {
@@ -66,7 +63,6 @@ async function LoginService(userDetails){
 
 
 function Logout(){
-    console.log("enterd")
     window.localStorage.removeItem("StudentToken");
     currentUser.next(getUser());
 }

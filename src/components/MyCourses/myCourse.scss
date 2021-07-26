@@ -3,7 +3,30 @@
     background-color: white !important;
     color: rgb(99, 231, 134) !important;
 }
-
+.chart-container{
+    background-color: white;
+    border-radius: 10px;
+    h3{
+        font-family: "Lato";
+        font-weight: 700;
+    }
+    span{
+        row-gap: 1rem;
+        font-family: "Mulish";
+        color: black;
+        font-weight: 800;
+        p{
+            font-family: "Roboto";
+            font-weight: 600;
+            color: lightgrey;
+            span{
+                width: 75%;
+                height: 4px;
+                border-radius: 999px;
+            }
+        }
+    }
+}
 
 .course-container{
     // border-collapse: separate; 
@@ -18,8 +41,12 @@
         font-size: 18px;
         letter-spacing: 0.2px;
         // padding: 0rem 0.3rem !important;
-        color: rgb(17, 50, 240);
+        color: rgb(141, 158, 252);
         border-radius: 10px;
+        span{
+            padding: 0rem 0.3rem !important;
+            overflow-x: scroll;
+        }
     }
     .course-details{
         background-color: white;

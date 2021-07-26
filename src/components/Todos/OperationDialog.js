@@ -20,7 +20,6 @@ export default function OperationDialog(props) {
             description: ""
         })
     },[props.todo])
-    console.log(props,todoDetails)
     let AddTodo = async () => {
         setGlobalLoading(true)
         try{

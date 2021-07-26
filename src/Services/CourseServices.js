@@ -121,9 +121,7 @@ async function getEnrolledIn(semester="",year=""){
 
 async function enrollStudents(data,otherData,m){
     let students = [];
-    console.log(m)
     data.map(d => {
-        console.log(d)
         students.push({
             student: d.student,
             year: parseInt(otherData.year),

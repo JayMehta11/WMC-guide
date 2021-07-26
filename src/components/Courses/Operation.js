@@ -124,7 +124,6 @@ export default function Operation(props) {
         start.current.value = ""
         end.current.value = ""
     }
-    console.log(courseDetails)
 
     let AddCourse = async () => {
         setGlobalLoading(true);
@@ -136,7 +135,6 @@ export default function Operation(props) {
                 await props.FetchCourses()
                 props.close()
             }else{
-                console.log(AddCourseResponse)
                 toast.error(AddCourseResponse.message)
                 setGlobalLoading(false)
             }
@@ -267,7 +265,7 @@ export default function Operation(props) {
                             inputRef={ScheduleDay} >
 
                                 {Days.map((day,i) => 
-                                    <option value={i}>{day}</option>
+                                    <option key={i} value={i}>{day}</option>
                                 )}
                             </TextField>
                             <TextField label="ST"  focused type="time" className="me-2" inputRef={start} />

@@ -73,7 +73,6 @@ export default function Courses() {
         }
         
     }
-    console.log(courses)
     let FetchCourses = async () => {
         setLoading(true);
         try{
@@ -166,7 +165,6 @@ export default function Courses() {
                 setGlobalLoading(false)
             }
         }catch(err){
-            console.log(err)
             setGlobalLoading(false)
             toast.error("Unable to Add Rating")
         }

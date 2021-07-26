@@ -90,7 +90,6 @@ export default function StudentEnroll() {
             
             let StudentResponse = await getUsers(searchTerm.current.value);
             setLoading(false);
-            console.log(StudentResponse)
             if(StudentResponse.status){
                 setStudents(StudentResponse.students)
             }else{
@@ -99,7 +98,6 @@ export default function StudentEnroll() {
             }
         }catch(err){
             setLoading(false);
-            console.log(err)
             toast.error("Unable to get Students")
         }
         
@@ -109,7 +107,6 @@ export default function StudentEnroll() {
     let ChangeSelect = (e,i) => {
         let dp = students;
         dp[i] = {...dp[i],checked: e.target.checked};
-        console.log(dp[i])
         setStudents(dp);
     }
 
@@ -133,9 +130,6 @@ export default function StudentEnroll() {
             window.removeEventListener('resize',getTableScaling)
         }
     },[students])
-
-    
-    console.log("Select",students)
     return (
         <>
             <div className="w-100 mt-4 px-lg-5 px-md-4 px-1 d-flex flex-wrap justify-content-between align-items-center">
@@ -155,14 +149,14 @@ export default function StudentEnroll() {
             {students==="loading" || loading ? <div className="w-100 mt-4 text-center"><PulseLoader size={15} margin={2} color="#36D7B7" /></div> : 
             <>
             {students.length===0 ? <h4 className={`text-center mt-5 no-data-found`}>No Data Found <SentimentDissatisfiedOutlined /></h4> :
-            <div className="w-100 my-4 d-flex flex-column justify-content-between align-items-center student-container px-lg-5 px-md-4 px-1 mx-auto">
-                <div className="w-100 d-flex  align-items-center py-0 header">
+            <div className="w-100 my-4 d-flex flex-column justify-content-between align-items-center student-container px-lg-3 px-md-2 px-1 mx-auto">
+                <div className="w-100 d-flex align-items-center py-0 header">
                     {/* <span><Fab className={"col-1 fab-button " + (course.done ? "completed" :"not_completed")} ><AssignmentTurnedInOutlined className={(course.done ? "completed" :"not_completed")} /></Fab></span> */}
                     <span className="col-1 text-center"><input ref={selectAllResf} type="checkbox" onChange={(e) => HandleSelectAll()} style={{color: '#0d6efd'}} /></span>
-                    <span className="col-3 text-center">{"Id"}</span>
+                    <span className="col-2 text-center">{"Id"}</span>
                     <span className="col-3 text-center" style={{textAlign: "right"}}>{"Name"}</span>
                     <span className="col-4 text-center">{"Email-id"}</span>
-                    <span className="col-1 text-center">{"Programme"}</span>
+                    <span className="col-2 text-center">{"Programme"}</span>
                 </div>
                 {students.map((student,i) => 
                     
@@ -170,10 +164,10 @@ export default function StudentEnroll() {
                     <span key={student._id} className={"w-100 student-details "+(!((i>=(10*page)) && i<(Math.min(10*(page+1),students.length))) ? "hindrence" : "")}>
                         <div className="w-100 d-flex  align-items-center student py-0">
                             <span className="col-1 text-center">{<input type="checkbox" ref={el => selectRef.current[i]=el} />}</span>
-                            <span className="col-3 text-center">{student.enrollmentNumber}</span>
+                            <span className="col-2 text-center">{student.enrollmentNumber}</span>
                             <span className="col-3 text-center">{student.firstName}</span>
                             <span className="col-4 text-center" >{student.emailId}</span>
-                            <span className="col-1 text-center" >{student.programme}</span>
+                            <span className="col-2 text-center" >{student.programme}</span>
                         </div>
                     </span>
                 )}    

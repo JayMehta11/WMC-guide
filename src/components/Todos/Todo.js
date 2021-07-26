@@ -178,7 +178,7 @@ export default function Todo() {
     }
     return (
         <>
-            <div className="w-100 mt-4 px-lg-5 px-md-4 px-1 d-flex justify-content-between align-items-center">
+            <div className="w-100 mt-4 px-lg-5 px-md-4 px-1 flex-wrap d-flex justify-content-between align-items-center">
                 <Button variant="contained" onClick={() => setOpenOperationDialog(true)} startIcon={<AddOutlined />} color="primary">Add Todo</Button>
                 <TextField 
                     select 

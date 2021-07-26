@@ -18,7 +18,6 @@ export default function Operation(props) {
 
     useEffect(() => {
         let data = []
-        console.log(props)
         setStudents([]);
         
             for(let i=0;i<props.students.length;i++){

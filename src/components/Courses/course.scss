@@ -11,8 +11,12 @@
         font-size: 18px;
         letter-spacing: 0.2px;
         // padding: 0rem 0.3rem !important;
-        color: rgb(17, 50, 240);
+        color: rgb(141, 158, 252);
         border-radius: 10px;
+        span{
+            padding: 0rem 0.3rem !important;
+            overflow-x: scroll;
+        }
     }
     .course-details{
         background-color: white;
