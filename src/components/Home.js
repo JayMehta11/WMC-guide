@@ -62,7 +62,7 @@ function Home(props) {
                 keepMounted: true, 
               }}
             >
-              <SideNavBar></SideNavBar>
+              <SideNavBar mobileOpen={mobileOpen} close={() => handleDrawerToggle()}></SideNavBar>
             </Drawer>
           </Hidden>
           <Hidden xsDown implementation="css">
