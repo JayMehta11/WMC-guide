@@ -226,7 +226,7 @@ export default function MyCourses() {
                 /></span>
             </div>} */}
 
-            {creditsDistribution!==false && <div className="mx-lg-5 mx-md-4 mx-2 mt-5 pt-2 shadow chart-container">
+            {(creditsDistribution!==false && creditsDistributionData.length!==0) && <div className="mx-lg-5 mx-md-4 mx-2 mt-5 pt-2 shadow chart-container">
                 <h3 className="text-center">Credits Distribution</h3>
                 <div className="d-flex mt-3 justify-content-center align-items-center flex-lg-row flex-md-column-reverse flex-column-reverse">
                     <div className="col-6 my-3 d-flex justify-content-center align-items-center">
@@ -247,7 +247,7 @@ export default function MyCourses() {
                         />
                     </span>
                 </div>
-                </div>
+            </div>
                 
                 
             </div>}
