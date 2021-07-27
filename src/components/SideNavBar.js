@@ -54,7 +54,13 @@ export default function SideNavBar(props) {
                         <EventNoteOutlined />
                         My Courses
                     </div>
+
                     <div onClick={() => {HandleNavigationChange(2)}} className={"w-100 d-flex px-4 py-3 side-nav-item" + (navigator===2 ? " active" : "")} >
+                        <EventNoteOutlined />
+                        Time Table
+                    </div>
+
+                    <div onClick={() => {HandleNavigationChange(3)}} className={"w-100 d-flex px-4 py-3 side-nav-item" + (navigator===3 ? " active" : "")} >
                         <MenuBookOutlined />
                         Courses
                     </div>
