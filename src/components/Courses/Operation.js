@@ -133,6 +133,7 @@ export default function Operation(props) {
                 toast.success(AddCourseResponse.message)
                 setGlobalLoading(false)
                 await props.FetchCourses()
+                setCourseDetails(init)
                 props.close()
             }else{
                 toast.error(AddCourseResponse.message)

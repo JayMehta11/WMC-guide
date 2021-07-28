@@ -51,7 +51,7 @@ export default function MyCourses() {
     const colors = [
         // "#004c6d","#346888","#5886a5","#7aa6c2","#9dc6e0","#c1e7ff"
         // "#8CE68C","#ABF1BC","#CFFFF6","#AEE7F8","#87CDF6"
-        "#1fe074","#00c698","#00a9b5","008ac5","0069c0","0045a5","0b1d78"
+        "#1fe074","#00c698","#00a9b5","#008ac5","#0069c0","#0045a5","#0b1d78"
     ]
     
     

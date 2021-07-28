@@ -70,7 +70,6 @@ export default function TimeTable() {
             initialView="timeGridWeek"
             weekends={true}            
             events = {events}
-
             />
             }
         </div>
