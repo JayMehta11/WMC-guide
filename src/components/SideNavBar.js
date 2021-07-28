@@ -1,4 +1,4 @@
-import { AddToPhotosSharp, AssignmentOutlined, EventNoteOutlined, ExitToAppOutlined, MenuBookOutlined } from '@material-ui/icons'
+import { AddToPhotosSharp, AssignmentOutlined, EventNoteOutlined, EventOutlined, ExitToAppOutlined, MenuBookOutlined } from '@material-ui/icons'
 import React, { useContext, useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
 import { HomeContext } from '../Context/HomeContext'
@@ -56,7 +56,7 @@ export default function SideNavBar(props) {
                     </div>
 
                     <div onClick={() => {HandleNavigationChange(2)}} className={"w-100 d-flex px-4 py-3 side-nav-item" + (navigator===2 ? " active" : "")} >
-                        <EventNoteOutlined />
+                        <EventOutlined />
                         Time Table
                     </div>
 
