@@ -33,7 +33,7 @@ export default function MyCourses() {
     const [page,setPage] = useState(0);
     const [credits,setCredits] = useState(0)
     const [semester,setSemester] = useState("");
-    const [year,setYear] = useState(parseInt(moment().format('YYYY')))
+    const [year,setYear] = useState("")
     useEffect(() => {
         let AuthObservalble = currentUser.subscribe(data => setUser(data))
     
