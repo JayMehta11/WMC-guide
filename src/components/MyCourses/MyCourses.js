@@ -128,11 +128,12 @@ export default function MyCourses() {
                 setCreditsDistributionData(y);
 
             }else{
-                
+                console.log(CourseResponse);
                 setcourses([])
                 toast.error("Unable to get Courses") 
             }
         }catch(err){
+            console.log(err);
             setLoading(false);
             toast.error("Unable to get Courses")
         }
