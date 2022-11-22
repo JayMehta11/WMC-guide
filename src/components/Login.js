@@ -10,8 +10,8 @@ export default function Login() {
     const [user,setUser] = useState(currentUser.value);
     const {setGlobalLoading} = useContext(GlobalLoadingContext);
     const [userDetails,setUserDetails] = useState({
-        emailId: "",
-        password: ""
+        emailId: "test@test123.com",
+        password: "Test_123"
     })
 
     useEffect(() => {
